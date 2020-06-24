@@ -7,7 +7,10 @@ def sub(num1,num2):
 def mult(num1,num2):
     print(num1*num2)
 def div(num1,num2):
-    print(num1/num2)
+  try:
+      print(num1/num2)
+  except ZeroDivisionError as err:
+      print(err)
 
 # Defining a boolean exit button.
 leave = False
