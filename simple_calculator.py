@@ -1,19 +1,46 @@
-# Quick note: Mano, do you understand how naming conventions work? 
-# For exemple: variable naming convention for javascript is camel case 
-# such as " var myCar". But in python is "my_car", which is called sanake case.
-# Files also have naming convention. For instance, when you have a file with a class Car
-# you name the file of Car.py, but you have a file with a function, say "def get_car():"
-# you name it car.py  
+# Function definition for the math operations.
 
-# Mano, my clients has a proble: he goes shopping his groceries every other day and he
-# hates the fact that he has to work out the expenses and how much money he has to give
-# to the counter in his head. So, he's looking for a simple calculator that helps him
-# with the boring repetitive process. Could you build a simple calculator, easy to use? 
+def add(num1,num2):
+    print(num1+num2)
+def sub(num1,num2):
+    print(num1-num2)
+def mult(num1,num2):
+    print(num1*num2)
+def div(num1,num2):
+    print(num1/num2)
 
-#### The calculater shoud have addiction, multplication, subtraction and division functions
-### so that when the clients needs the total of his workouts, he only needs to do the following
+# Defining a boolean exit button.
+leave = False
+# while loop in function to our boolean button
+while leave == False :
+    # Getting input from the user.
 
-# for example: total = add function + subtruction function
-### Also, have in mind that the client should have a clear message on what operation he's doing. 
+    num1 = float(input("First number: "))
+    oper= input("Operation: ")
+    num2 = float(input("Second number: "))
 
-## hint: use of functions, loops and conditionals
+    #conditionals for the final result.
+
+    if oper == "add" or oper == "+" or oper == "sum":
+      add(num1, num2)
+    elif oper == "subtraction" or oper == "-":
+      sub(num1,num2)
+    elif oper == "multiplication" or oper == "multiply"or oper == "x" or oper =="*":
+      mult(num1,num2)
+    elif oper=="division" or oper=="div" or oper=="divide" or oper=="/":
+      div(num1,num2)
+    else:
+      print("Invalid operator, please try again!")
+
+    # Getting input about user wanting to quit the app.
+    question = input("Do you wish to exit? Y/N ")
+    if question == "Y" or question =="y":
+        leave = True
+    elif question == "N" or question == "n":
+        leave = False
+    else:
+        print("Invalid answer, leaving...")
+        leave = True
+
+
+
