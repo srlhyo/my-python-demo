@@ -16,34 +16,28 @@ def div(num1,num2):
 leave = False
 # while loop in function to our boolean button
 while leave == False :
-    # Getting input from the user.
-
-    num1 = float(input("First number: "))
-    oper= input("Operation: ")
-    num2 = float(input("Second number: "))
+  
+    # Getting input from the user(The input starts all as str but is converted to float after).
+    try:
+      numA, oper, numB = input("Ready: ").split()
+    except ValueError as err:
+      print(err)
+      break
+    
+    num1, num2 = float(numA), float(numB)
+  
 
     #conditionals for the final result.
 
-    if oper == "add" or oper == "+" or oper == "sum":
+    if oper == "+":
       add(num1, num2)
-    elif oper == "subtraction" or oper == "-":
+    elif oper == "-":
       sub(num1,num2)
-    elif oper == "multiplication" or oper == "multiply"or oper == "x" or oper =="*":
+    elif oper == "x" or oper == "*":
       mult(num1,num2)
-    elif oper=="division" or oper=="div" or oper=="divide" or oper=="/":
+    elif oper== "/":
       div(num1,num2)
     else:
       print("Invalid operator, please try again!")
 
-    # Getting input about user wanting to quit the app.
-    question = input("Do you wish to exit? Y/N ")
-    if question == "Y" or question =="y":
-        leave = True
-    elif question == "N" or question == "n":
-        leave = False
-    else:
-        print("Invalid answer, leaving...")
-        leave = True
-
-
-
+   
