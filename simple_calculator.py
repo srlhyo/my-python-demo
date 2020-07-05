@@ -41,7 +41,7 @@ while leave == False :
       print("Invalid operator, please try again!")
 
     get_out = input("Type exit if you wish to leave, or press enter to continue")
-    if get_out == "exit" | get_out == "Exit":
+    if get_out == "exit" or get_out == "Exit":
       leave = True
     else :
       leave = False
