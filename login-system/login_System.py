@@ -2,17 +2,12 @@
 import getpass
 from pathlib import Path
 import csv
+import pandas as pd
 
 csvfile = Path("./users.csv")
 csvfile1 = Path("./passwords.csv")
-users = []
-passwords = []
-with open(csvfile, newline = '') as f:
-    reader = csv.reader(f)
-    users = list(reader)
-with open(csvfile1, newline = '') as f:
-    reader = csv.reader(f)
-    passwords = list(reader)
+users = list(pd.read_csv("users.csv"))
+passwords = list(pd.read_csv("passwords.csv"))
 
  
  
@@ -27,35 +22,42 @@ if index == "Sign up" or index == "sign up":
     with open(csvfile, 'w') as output:
         writer = csv.writer(output, lineterminator='\n')
         for val in users:
-            writer.writerow([val]) 
+            writer.writerow(val) 
 
     with open(csvfile1, 'w') as output:
         writer = csv.writer(output, lineterminator='\n')
         for val in passwords:
-            writer.writerow([val])
+            writer.writerow(val)
     
 else:
     access = False 
 
     while access == False : 
+        uname = input("Username: ")
+        
+        
+        for x in users:
+            if uname == x :
+                print("Username accepted.")
+            else:
+                print("Username not on the list.")
+                access = True
 
-        try:
-            uname = input("Username: ")
-            uindex = users.index(uname)
-            matchPass = passwords.index(uindex)
-            passw = getpass.getpass("Password: ")
-        except ValueError as err:
-            print(err)
-            break
-
-
-        if passw == matchPass :
-            
-            access = True
-            print("Access granted!")
-
+        if access == True :
+            continue
+        
         else:
+        
+            passw = getpass.getpass("Password: ")
 
-            access = False
-            print("Access denied. Try again...")
+            for x in passwords:
+                if passw == x :
+                    access = True
+                    print("Access granted!")
+                
+
+                else:
+
+                    access = False
+                    print("Access denied. Try again...")
 
