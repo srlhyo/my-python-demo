@@ -10,13 +10,13 @@ users = list(pd.read_csv("users.csv"))
 passwords = list(pd.read_csv("passwords.csv"))
 
 def writeUsersCSV():
-     with open(csvfile, 'w') as output:
+     with open(csvfile, 'w', encoding='utf-8') as output:
         writer = csv.writer(output, lineterminator='\n')
         for val in users:
             writer.writerow(val) 
 
 def writePasswordCSV():
-    with open(csvfile1, 'w') as output:
+    with open(csvfile1, 'w', encoding='utf-8') as output:
         writer = csv.writer(output, lineterminator='\n')
         for val in passwords:
             writer.writerow(val)
@@ -28,8 +28,8 @@ if index == "Sign up" or index == "sign up":
     passw = getpass.getpass("Input new Password:")
     users.append(uname)
     passwords.append(passw)
-    writeUsersCSV
-    writePasswordCSV
+    writeUsersCSV()
+    writePasswordCSV()
 else:
     access = False 
     while access == False : 
