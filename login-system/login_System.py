@@ -30,18 +30,10 @@ if index == "Sign up" or index == "sign up":
     passwords.append(passw)
     writeUsersCSV
     writePasswordCSV
-
-   
-
-    
-    
 else:
     access = False 
-
     while access == False : 
         uname = input("Username: ")
-        
-        
         for x in users:
             if uname == x :
                 print("Username accepted.")
@@ -51,17 +43,12 @@ else:
 
         if access == True :
             continue
-        
         else:
-        
             passw = getpass.getpass("Password: ")
-
             for x in passwords:
                 if passw == x :
                     access = True
                     print("Access granted!")
-                
-
                 else:
 
                     access = False
