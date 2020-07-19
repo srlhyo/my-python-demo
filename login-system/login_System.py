@@ -21,13 +21,25 @@ def writePasswordCSV():
         for val in passwords:
             writer.writerow(val)
  
+def get_User():
+    uname = input("Input new Username: ")
+    for x in users:
+        if uname == x: 
+            print("Username already in use!")
+            exit    
+        else:
+            print("Username accepted!")
+            users.append(uname)
+            
+def get_Pass():
+    passw = getpass.getpass("Input new Password:")
+    passwords.append(passw)
+
 index = input("Sign up or sign in? ")
 
 if index == "Sign up" or index == "sign up":
-    uname = input("Input new Username: ")
-    passw = getpass.getpass("Input new Password:")
-    users.append(uname)
-    passwords.append(passw)
+    get_User()
+    get_Pass()
     writeUsersCSV()
     writePasswordCSV()
 else:
