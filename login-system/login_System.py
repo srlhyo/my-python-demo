@@ -2,24 +2,33 @@
 import getpass
 from pathlib import Path
 import csv
-import pandas as pd
 
-csvfile = Path("./users.csv")
-csvfile1 = Path("./passwords.csv")
-users = list(pd.read_csv("users.csv"))
-passwords = list(pd.read_csv("passwords.csv"))
+ufilepath = Path("./users.csv")
+pfilepath = Path("./passwords.csv")
+users = []
+passwords = []
+
+def readUserCSV():
+    openUsers = open(ufilepath, newline='')
+    csvfile = csv.reader(openUsers)
+    users = list(csvfile)
+
+def readPassCSV():
+    openPass = open(pfilepath, newline='')
+    csvfile1 = csv.reader(openPass)
+    passwords = list(csvfile1)
 
 def writeUsersCSV():
-     with open(csvfile, 'w', encoding='utf-8') as output:
-        writer = csv.writer(output, lineterminator='\n')
-        for val in users:
-            writer.writerow(val) 
+    csvfile = open(ufilepath,'w')
+    writer = csv.writer(csvfile)
+    for val in users:
+        writer.writerow(val) 
 
 def writePasswordCSV():
-    with open(csvfile1, 'w', encoding='utf-8') as output:
-        writer = csv.writer(output, lineterminator='\n')
-        for val in passwords:
-            writer.writerow(val)
+    csvfile1 = open(pfilepath,'w')
+    writer = csv.writer(csvfile1)
+    for val in passwords:
+        writer.writerow(val.strip()) 
  
 def get_User():
     uname = input("Input new Username: ")
@@ -42,8 +51,11 @@ if index == "Sign up" or index == "sign up":
     get_Pass()
     writeUsersCSV()
     writePasswordCSV()
+    
 else:
-    access = False 
+    access = False
+    readUserCSV()
+    readPassCSV()
     while access == False : 
         uname = input("Username: ")
         for x in users:
